@@ -15,3 +15,13 @@ app.use(express.json());
 app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)
 })
+
+// test endpoint
+app.get("/allBooks", async (req, res) => {
+    try {
+        let allBooks = await executeCRUDLogic();
+        res.json(allBooks);
+    } catch (error) {
+        res.json({ message: error.message });
+    }
+})
